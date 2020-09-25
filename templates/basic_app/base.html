@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Directory</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!-- BOOTY JS -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-primary bg-warning">
+        <div class="container">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="{%url 'index' %}" class="navbar-brand"><b>DJANGO</b></a></li>
+                
+                
+                {% if user.is_authenticated %}
+                
+                <li class="nav-item"><a href="{%url 'admin:index' %}" class="nav-link">Admin</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">LOGOUT</a></li>
+                
+                {% else %}
+                
+                <li class="nav-item"><a href="{% url 'basic_app:user_login' %}" class="nav-link">Login</a></li>
+                <li class="nav-item"><a href="{% url 'basic_app:register' %}" class="nav-link">Register</a></li>
+                
+                {% endif %}
+                
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron">
+            
+            {% block content %}
+            
+            {% endblock content %}
+            
+        </div>
+    </div>
+        
+</body>
+</html>

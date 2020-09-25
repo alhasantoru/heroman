@@ -1,0 +1,29 @@
+{% extends "basic_app/base.html" %}
+
+
+{% block content %}
+
+
+{% if registered %}
+
+    <h1>WElcome from Index</h1>
+
+{% else %}
+
+
+{% if user.is_authenticated %}
+    
+    <h6>dear {{request.user.username}},</h6>
+    <h3>Welcome to Django!</h3>
+    
+    {% else %}
+    
+    <h3>
+        Join our Community NOW!
+    </h3>
+        {% endif %}
+    
+
+{% endif %}
+
+{% endblock content  %}
